@@ -9,9 +9,7 @@ CREATE TABLE IF NOT EXISTS switch (
 );
 """
 
-SWITCH_INSERT = """
-INSERT INTO switch (last_switch) VALUES (?)
-"""
+
 
 
 class DataBase:
@@ -24,6 +22,10 @@ class DataBase:
 
     def database_setup(self):
         cursor = self.connection.cursor()
-        cursor.execute(SWITCH_INSERT, (1,))
         cursor.execute(SWITCH_SQL)
+        cursor.execute('SELECT COUNT(*) FROM switch')
+        (number_of_rows,) = cursor.fetchone()
+        print(number_of_rows)
+        if number_of_rows < 1:
+            cursor.execute('INSERT INTO switch (last_switch) VALUES (?)', (1,))
         self.connection.commit()
