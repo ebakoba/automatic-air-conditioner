@@ -1,6 +1,6 @@
 from time import sleep
-from database import DataBase
-from update import should_switch, update_time
+from src.database import DataBase
+from src.update import should_switch, update_time
 
 database = DataBase()
 

@@ -1,7 +1,7 @@
 import os
 import sqlite3
 
-DATABASE_PATH = os.path.join(os.path.dirname(__file__), 'database.sqlite3')
+DATABASE_PATH = os.path.join(os.getcwd(), 'database.sqlite3')
 
 SWITCH_SQL = """
 CREATE TABLE IF NOT EXISTS switch (

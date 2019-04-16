@@ -1,5 +1,5 @@
 from time import time
-from database import DataBase
+from src.database import DataBase
 
 database = DataBase()
 
