@@ -19,13 +19,9 @@ class ConfigurationService:
             set_interval(self.read_config, 10)
 
     def read_config(self):
-        print('reading config')
         with open('config.json') as json_data_file:
             self.config = json.load(json_data_file)
-            print(self.config)
 
     def get_config(self):
         return self.config
 
-    #print(data)
-    #threshold = data['threshold']
