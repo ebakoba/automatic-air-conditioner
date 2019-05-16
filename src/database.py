@@ -9,9 +9,6 @@ CREATE TABLE IF NOT EXISTS switch (
 );
 """
 
-
-
-
 class DataBase:
     def __init__(self):
         if not hasattr(self, 'connection'):

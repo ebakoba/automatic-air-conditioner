@@ -20,6 +20,6 @@
 
 # Developing
 
-## Commands
+* Create a config (i.e. with `cp ./config.example.json ./config.json`)
 
 * `pipenv run python main.py`
