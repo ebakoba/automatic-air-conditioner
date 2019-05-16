@@ -2,20 +2,29 @@ from time import sleep
 from src.configuration import ConfigurationService
 from src.database import DataBase
 from src.update import should_switch, update_time
+from src.temperature import TemperatureService
+from src.relayservice import RelayService
 
-database = DataBase()
-configService = ConfigurationService()
-
-def start():
+def start(database):
     database.database_setup()
 
-def loop():
-    print(should_switch())
+def loop(configService, temperatureService, relayService):
     if should_switch():
-        # do logic here
+        threshold = configService.get_config().threshold
+        temperature = temperatureService.read_temperature()
+        if threshold < temperature:
+            relayService.switch(0)
+        else:
+            relayService.switch(1)
+
         update_time()
     sleep(2)
 
-start()
-while True:
-    loop()
+if __name__ == '__main__':
+    database = DataBase()
+    configService = ConfigurationService()
+    temperatureService = TemperatureService(12)
+    relayService = RelayService(16)
+    start(database)
+    while True:
+        loop(configService, temperatureService, relayService)

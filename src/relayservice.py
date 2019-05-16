@@ -6,8 +6,5 @@ class RelayService:
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(pin, GPIO.OUT, initial = GPIO.HIGH)
 
-    def get_state(self):
-        return GPIO.input(self.pin)
-
-    def switch(self):       
-        GPIO.output(self.pin, self.get_state() == False)
+    def switch(self, desired_state):       
+        GPIO.output(self.pin, desired_state)
