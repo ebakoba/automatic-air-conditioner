@@ -7,19 +7,20 @@
 
 ## Software
 
-### Requirements
+* Python 3
 
-* Python 3.7.3
-
-* Pipenv
-
-### Commands
-
-* `pipenv install`
+* Pyhton modules ```Adafruit_DHT``` and ```RPi.GPIO```
 
 
-# Developing
+# How to run
 
 * Create a config (i.e. with `cp ./config.example.json ./config.json`)
 
-* `pipenv run python main.py`
+* `python3 main.py`
+
+# Usage
+
+The threshold temperature or the timeout period between the switches    can be changed in the ```config.json``` file.
+
+Program will adapt settings in next 10 seconds and does not require a restart
+
