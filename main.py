@@ -10,7 +10,7 @@ def start(database):
 
 def loop(configService, temperatureService, relayService):
     if should_switch():
-        threshold = configService.get_config().threshold
+        threshold = configService.get_config()['threshold']
         temperature = temperatureService.read_temperature()
         if threshold < temperature:
             relayService.switch(0)
@@ -23,7 +23,7 @@ def loop(configService, temperatureService, relayService):
 if __name__ == '__main__':
     database = DataBase()
     configService = ConfigurationService()
-    temperatureService = TemperatureService(12)
+    temperatureService = TemperatureService(18)
     relayService = RelayService(16)
     start(database)
     while True:
